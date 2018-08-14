@@ -1,8 +1,10 @@
-const express = require('express');
+const express		= require("express"),
 
-const app = express();
+             app = express(),
 
-const api = require('./api/api');
+             api = require('./api/api.js');
+
+           // err = require('./middleware/err');
 
 //midlleware thisway or
 require('./middleware/appMiddleware')(app);
@@ -14,7 +16,14 @@ require('./middleware/appMiddleware')(app);
 
 app.use('/api', api);
 
-//errorhandling
+app.use((err, req, res, next) => {
+    res.status(500).json(err.message);
+    next();
+})
+
+//set up global error handling
+//app.use(err());
+//app.use(err());
 
 module.exports = app;
 

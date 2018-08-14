@@ -1,4 +1,4 @@
-const config = require('./server/config/config');
+var config = require('./server/config/config');
 
 const app = require('./server/server');
 
@@ -6,4 +6,4 @@ const logger = require('./server/util/logger');
 
 app.listen(config.port);
 
-logger.log('listeningon http://localhost:' + config.port);
+logger.log('listening on http://localhost:' + config.port);
