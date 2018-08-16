@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
 
-var PostSchema = new Schema({
+    Schema = mongoose.Schema;
+
+const PostSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -10,12 +11,18 @@ var PostSchema = new Schema({
 
     text: {
         type: String,
-        required: true
+        required: true000
     },
     // array of ids from the users
-    author: [{type: Schema.Types.ObjectId, ref: 'user'}],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    },
 
-    categories: [{type: Schema.Types.ObjectId, ref: 'category'}]
+    categories: {
+        type: Schema.Types.ObjectId,
+        ref: 'category'
+    }
 });
 
 module.exports = mongoose.model('post', PostSchema);
