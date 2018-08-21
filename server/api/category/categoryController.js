@@ -30,16 +30,11 @@ exports.getOne = (req, res, next) => {
     res.json(category);
 };
 
-exports.put = (res, res, next) => {
-
+exports.put = (res, req, next) => {
     const category = req.category;
-
     const update = req.body;
-
     _.merge(category, update);
-
     category.save((err, saved) => {
-
         if(err) {
             next(err);
         } else {

@@ -11,7 +11,7 @@ const PostSchema = new Schema({
 
     text: {
         type: String,
-        required: true000
+        required: true
     },
     // array of ids from the users
     author: {
