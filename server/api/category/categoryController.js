@@ -19,7 +19,7 @@ exports.params = (req, res, next, id) => {
 exports.get = (req, res, next) => {
     Category.find({})
         .then((categories) => {
-            res.json(categories);
+            res.status(200).json({categories, message: 'success'});
         }, (err) => {
             next(err);
         })
@@ -47,7 +47,7 @@ exports.post = (req, res, next) => {
     const newCategory = req.body;
     Category.create(newCategory)
         .then((category) => {
-            res.json(category);
+            res.status(200).json({category, message: 'success'});
         }, (err) => {
             next(err);
         });
