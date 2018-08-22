@@ -46,7 +46,7 @@ exports.post = (req, res, next) => {
     const newUser = req.body;
     User.create(newUser)
         .then((user) => {
-            res.json(user);
+            res.status(200).json({user, message: 'success'});
         }, (err) => {
             next(err);
         })

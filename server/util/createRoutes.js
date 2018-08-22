@@ -1,4 +1,5 @@
 module.exports = (controller, router) => {
+
     router.param('id', controller.params);
 
     router.route('/')
