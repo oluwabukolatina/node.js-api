@@ -1,9 +1,10 @@
 module.exports = (controller, router) => {
+
     router.param('id', controller.params);
 
     router.route('/')
-        .post(controller.get)
-        .get(controller.post)
+        .get(controller.get)
+        .post(controller.post)
 
     router.route('/:id')
         .get(controller.getOne)

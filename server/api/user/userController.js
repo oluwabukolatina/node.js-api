@@ -18,7 +18,7 @@ exports.params = (req, res, next, id) => {
 exports.get = (req, res, next) => {
     User.find({})
         .then((users) => {
-            res.json(users);
+            res.status(200).json({users, message: 'success'});
         }, (err) => {
             next(err);
         });
@@ -26,7 +26,7 @@ exports.get = (req, res, next) => {
 
 exports.getOne = (req, res, next) => {
     const user = req.user;
-    res.json(user);
+    res.status(200).json({user, message: 'success'});
 }
 
 exports.put = (req, res, next) => {
@@ -46,7 +46,7 @@ exports.post = (req, res, next) => {
     const newUser = req.body;
     User.create(newUser)
         .then((user) => {
-            res.json(user);
+            res.status(200).json({user, message: 'success'});
         }, (err) => {
             next(err);
         })

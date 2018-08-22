@@ -22,7 +22,7 @@ exports.get = (req, res, next) => {
         .populate('author categories')
         .exec()
         .then((posts) => {
-            res.json(posts);
+            res.status(200).json({posts, message: 'success'});
         }, (err) => {
             next(err);
         });
@@ -30,7 +30,7 @@ exports.get = (req, res, next) => {
 
 exports.getOne = (req, res, next) => {
     const post = req.post;
-    res.json(post);
+    res.status(200).json({post, message: 'success'});
 }
 
 exports.put = (req, res, next) => {

@@ -5,4 +5,10 @@ const router = require('express').Router(),
 
 createRoutes(controller, router);
 
+// router.route('/')
+//     .get(function(req, res){
+//         logger.log('Hey from user!!');
+//         res.send({ok: true});
+//     });
+
 module.exports = router;
