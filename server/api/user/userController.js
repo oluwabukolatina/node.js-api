@@ -43,13 +43,25 @@ exports.put = (req, res, next) => {
 }
 
 exports.post = (req, res, next) => {
-    const newUser = req.body;
-    User.create(newUser)
-        .then((user) => {
-            res.status(200).json({user, message: 'success'});
-        }, (err) => {
-            next(err);
-        })
+    // const newUser = req.body;
+
+    // User.create(newUser)
+    //     .then((user) => {
+    //         res.status(200).json({user, message: 'success'});
+    //     }, (err) => {
+    //         next(err);
+    //     })
+    const newUser = new User(req.body);
+
+    newUser.save((err, user) => {
+        if(err){
+            return next(err);
+        }
+
+        const token = signToken(user._id);
+        res.json({token: token});
+
+    })
 }
 
 exports.delete = (req, res, next) => {
